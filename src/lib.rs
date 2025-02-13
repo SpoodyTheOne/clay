@@ -340,7 +340,16 @@ impl<'a> Clay<'a> {
         }
     }
 
-    /// Sets the highlight color of the debug overlay
+    /// Returns whether or not the debug window is enabled
+    pub fn debug_mode_enabled(&self) -> bool {
+        unsafe {
+            Clay_IsDebugModeEnabled()
+        }
+    }
+
+    /// Sets the colour of the highlight that happens when
+    /// you hover over a node in the debugger on the element
+    /// it represents
     pub fn set_debug_highlight(&self, color: Color) {
         unsafe {
             Clay__debugViewHighlightColor = color.into();
