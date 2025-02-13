@@ -326,10 +326,24 @@ impl<'a> Clay<'a> {
         }
     }
 
+    /// Resets the text measurements cache.
+    pub fn reset_measure_text_cache(&self) {
+        unsafe {
+            Clay_ResetMeasureTextCache();
+        }
+    }
+
     /// Enables or disables the debug mode of clay
     pub fn enable_debug_mode(&self, enable: bool) {
         unsafe {
             Clay_SetDebugModeEnabled(enable);
+        }
+    }
+
+    /// Sets the highlight color of the debug overlay
+    pub fn set_debug_highlight(&self, color: Color) {
+        unsafe {
+            Clay__debugViewHighlightColor = color.into();
         }
     }
 
